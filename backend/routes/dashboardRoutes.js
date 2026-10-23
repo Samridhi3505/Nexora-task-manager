@@ -1,18 +1,24 @@
 
-import express from 'express'
-import { pool } from '../db.js'
-import authMiddleware from '../middleware/authMiddleware.js'
+import express from 'express';
+import { pool } from '../db.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
-const router = express.Router()
+const router = express.Router();
 
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    const userId = Number(req.user.id)
+    const userId = Number(req.user.id);
 
     const role = String(req.user.role || '')
-      .toLowerCase()
       .trim()
-      .replace(/[\s-]+/g, '_')
+      .toLowerCase()
+      .replace(/[\s_-]+/g, '_');
+
+    if (!Number.isInteger(userId) || userId <= 0) {
+      return res.status(401).json({
+        message: 'Invalid authenticated user.'
+      });
+    }
 
     const result = await pool.query(
       `SELECT
@@ -48,16 +54,23 @@ router.get('/', authMiddleware, async (req, res) => {
          OR pm.user_id = $1
          OR t.assignee_id = $1`,
       [userId, role]
-    )
+    );
 
-    return res.json(result.rows[0])
+    return res.json({
+      total_projects: result.rows[0]?.total_projects ?? 0,
+      total_tasks: result.rows[0]?.total_tasks ?? 0,
+      completed_tasks: result.rows[0]?.completed_tasks ?? 0,
+      pending_tasks: result.rows[0]?.pending_tasks ?? 0,
+      in_progress_tasks: result.rows[0]?.in_progress_tasks ?? 0
+    });
   } catch (error) {
-    console.error('Dashboard error:', error.message)
+    console.error('Dashboard error:', error);
 
     return res.status(500).json({
       message: 'Could not load dashboard statistics.',
-    })
+      error: error.message
+    });
   }
-})
+});
 
-export default router
+export default router;

@@ -70,9 +70,9 @@ export default function ProjectManagerDashboard() {
               <p>{project.description || "No description provided."}</p>
               <span className="project-status">{project.status || "Active"}</span>
               <div className="project-actions">
-                <Link to={`/projects/${project.id}`}>Open project →</Link>
-                <Link to={`/projects/${project.id}/tasks`}>View tasks</Link>
-                <Link to={`/projects/${project.id}/team`}>Manage team</Link>
+                <Link to={`/projects/${project.id}`}>Open project → </Link>
+                <Link to={`/projects/${project.id}/tasks`}>View tasks </Link>
+                <Link to={`/projects/${project.id}/team`}>Manage team </Link>
               </div>
             </article>
           )) : <Empty message="No assigned projects found." />}

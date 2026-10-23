@@ -389,3 +389,124 @@ td {
     padding: 16px;
   }
 }
+/* ===== PROJECTS AND USERS PAGE SPACING ===== */
+
+.projects-page,
+.users-page {
+  width: 100%;
+  padding: 28px 32px;
+  box-sizing: border-box;
+}
+
+/* Page headings */
+.projects-page h1,
+.users-page h1,
+.projects-page h2,
+.users-page h2 {
+  margin-bottom: 24px;
+}
+
+/* Search bar and filters */
+.projects-page input,
+.users-page input,
+.projects-page select {
+  padding: 12px 14px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Projects and users card containers */
+.projects-list,
+.users-list,
+.projects-grid,
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Individual cards */
+.project-card,
+.user-card {
+  padding: 24px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Card headings */
+.project-card h2,
+.project-card h3,
+.user-card h2,
+.user-card h3 {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Card descriptions and details */
+.project-card p,
+.user-card p {
+  margin: 12px 0;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+/* Status labels */
+.project-card .status,
+.user-card .status {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.project-card button,
+.user-card button {
+  padding: 10px 16px;
+  margin: 10px 8px 4px 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Dropdowns */
+.project-card select {
+  padding: 10px 12px;
+  margin: 8px 8px 8px 0;
+  max-width: 100%;
+}
+
+/* Card action links */
+.project-card a,
+.user-card a {
+  display: inline-block;
+  margin: 12px 12px 0 0;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .projects-page,
+  .users-page {
+    padding: 20px 16px;
+  }
+
+  .projects-list,
+  .users-list,
+  .projects-grid,
+  .users-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card,
+  .user-card {
+    padding: 18px;
+  }
+
+  .project-card button,
+  .user-card button {
+    margin: 8px 6px 4px 0;
+  }
+}

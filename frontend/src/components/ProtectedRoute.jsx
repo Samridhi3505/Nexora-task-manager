@@ -1,6 +1,13 @@
 
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
+function normalizeRole(role = '') {
+  return String(role)
+    .trim()
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
+}
+
 export default function ProtectedRoute({ children, allowedRoles }) {
   const location = useLocation()
   const token = localStorage.getItem('token')
@@ -14,17 +21,19 @@ export default function ProtectedRoute({ children, allowedRoles }) {
     user = null
   }
 
-  // Require both a token and valid user information.
-  if (!token || !user || !user.id || !user.role) {
-    return <Navigate to="/login" replace state={{ from: location }} />
+  if (!token || !user?.id || !user?.role) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{ from: location }}
+      />
+    )
   }
 
-  // Restrict pages based on the user's role.
   if (
     allowedRoles &&
-    !allowedRoles.includes(
-      String(user.role).toLowerCase().replace(/[\s-]+/g, '_')
-    )
+    !allowedRoles.map(normalizeRole).includes(normalizeRole(user.role))
   ) {
     return <Navigate to="/dashboard" replace />
   }

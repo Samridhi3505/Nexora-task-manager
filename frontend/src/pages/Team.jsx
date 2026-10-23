@@ -357,17 +357,17 @@ export default function Team() {
         <>
           <section className="team-stats">
             <article className="team-stat-card">
-              <span>Project Members</span>
+              <span>Project Members  : </span>
               <strong>{members.length}</strong>
             </article>
 
             <article className="team-stat-card">
-              <span>Project Managers</span>
+              <span>Project Managers  : </span>
               <strong>{projectManagersCount}</strong>
             </article>
 
             <article className="team-stat-card">
-              <span>Team Members</span>
+              <span>Team Members  : </span>
               <strong>{teamMembersCount}</strong>
             </article>
           </section>
@@ -402,8 +402,8 @@ export default function Team() {
                     value={form.project_role}
                     onChange={handleFormChange}
                   >
-                    <option value="Team Member">Team Member</option>
-                    <option value="Viewer">Viewer</option>
+                    <option value="Team Member">Team Member  : </option>
+                    <option value="Viewer">Viewer  : </option>
                   </select>
                 </label>
 
@@ -459,9 +459,9 @@ export default function Team() {
                 aria-label="Filter by project role"
               >
                 <option value="all">All roles</option>
-                <option value="project_manager">Project Manager</option>
-                <option value="team_member">Team Member</option>
-                <option value="viewer">Viewer</option>
+                <option value="project_manager">Project Manager  : </option>
+                <option value="team_member">Team Member  : </option>
+                <option value="viewer">Viewer  : </option>
               </select>
             </div>
 

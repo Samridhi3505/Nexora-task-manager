@@ -230,15 +230,15 @@ export default function Users() {
           <>
             <section className="users-summary">
               <article className="users-summary-card">
-                <span>Total Users</span>
+                <span>Total Users  : </span>
                 <strong>{users.length}</strong>
               </article>
               <article className="users-summary-card">
-                <span>Active Users</span>
+                <span>Active Users  : </span>
                 <strong>{activeCount}</strong>
               </article>
               <article className="users-summary-card">
-                <span>Inactive Users</span>
+                <span>Inactive Users  : </span>
                 <strong>{inactiveCount}</strong>
               </article>
             </section>
@@ -282,18 +282,20 @@ export default function Users() {
                   />
                 </label>
 
-                <label>
-                  Workspace role
-                  <select
-                    name="role"
-                    value={form.role}
-                    onChange={handleChange}
-                  >
-                    <option value="Project Manager">Project Manager</option>
-                    <option value="Team Member">Team Member</option>
-                    <option value="Viewer">Viewer</option>
-                  </select>
-                </label>
+               <label>
+  Workspace role
+  <select
+    name="role"
+    value={form.role}
+    onChange={handleChange}
+    required
+  >
+    <option value="Admin">Admin</option>
+    <option value="Project Manager">Project Manager</option>
+    <option value="Team Member">Team Member</option>
+    <option value="Viewer">Viewer</option>
+  </select>
+</label>
 
                 <p className="muted">
                   Admin accounts should be created through a controlled setup

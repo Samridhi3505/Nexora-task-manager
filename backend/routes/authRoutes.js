@@ -81,14 +81,14 @@ router.post('/register', async (req, res) => {
         message: 'Password must contain at least 8 characters.',
       })
     }
+    // Allow registration for all supported roles.
+if (!ALL_ROLES.includes(role)) {
+  return res.status(400).json({
+    message: 'Invalid role selected.',
+  })
+}
 
-    // Admin accounts cannot be created through public registration.
-    if (!PUBLIC_ROLES.includes(role)) {
-      return res.status(403).json({
-        message: 'This role cannot be registered publicly.',
-      })
-    }
-
+    
     const normalizedEmail = email.trim().toLowerCase()
 
     const existing = await pool.query(
