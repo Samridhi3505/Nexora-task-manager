@@ -1,0 +1,3 @@
+-- Demo data requires users with valid password hashes.
+-- Insert demo users only after implementing the registration/seed script and password hashing.
+-- Example project/task rows can be added after user IDs are available.
